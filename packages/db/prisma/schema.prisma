@@ -23,13 +23,14 @@ model User {
 }
 
 model Flow {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
   trigger   Trigger?
   Action    Action[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  FlowRuns  FlowRun[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Trigger {
@@ -50,6 +51,22 @@ model Action {
   metadata  Json
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
+}
+
+model FlowRun {
+  id            String         @id @default(uuid())
+  flowId        String
+  flow          Flow           @relation(fields: [flowId], references: [id])
+  metadata      Json
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  FlowRunOutBox FlowRunOutBox?
+}
+
+model FlowRunOutBox {
+  id        String  @id @default(uuid())
+  flowRunId String  @unique
+  flowRun   FlowRun @relation(fields: [flowRunId], references: [id])
 }
 
 enum TriggerEvent {
