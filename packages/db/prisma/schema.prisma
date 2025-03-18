@@ -38,7 +38,7 @@ model Trigger {
   flowId    String       @unique
   flow      Flow         @relation(fields: [flowId], references: [id])
   event     TriggerEvent
-  metadata  Json
+  metadata  Json         @default("{}")
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
 }
@@ -48,7 +48,7 @@ model Action {
   flowId    String
   flow      Flow        @relation(fields: [flowId], references: [id])
   event     ActionEvent
-  metadata  Json
+  metadata  Json        @default("{}")
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
 }
