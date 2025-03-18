@@ -27,7 +27,7 @@ model Flow {
   userId    Int
   user      User      @relation(fields: [userId], references: [id])
   trigger   Trigger?
-  Action    Action[]
+  action    Action[]
   FlowRuns  FlowRun[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -49,6 +49,7 @@ model Action {
   flow      Flow        @relation(fields: [flowId], references: [id])
   event     ActionEvent
   metadata  Json        @default("{}")
+  order     Int         @default(0)
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
 }

@@ -4,7 +4,7 @@ import client from "db/client"
 const webHook = asyncHandler( async (req, res) => {
   try {
     const { userId, flowId } = req.params;
-    const { githubId, githubCommit } = req.body;
+    const { githubId, githubCommit, githubName, githubEmail } = req.body;
   
     //handler body, params using middleware
   
@@ -13,7 +13,7 @@ const webHook = asyncHandler( async (req, res) => {
       const flowRun = await tx.flowRun.create({
         data: {
           flowId,
-          metadata: { githubId, githubCommit }
+          metadata: { githubId, githubCommit, githubName, githubEmail }
         }
       });
   
