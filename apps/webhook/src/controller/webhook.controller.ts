@@ -1,6 +1,5 @@
 import  { asyncHandler } from "common/asyncHandler";
 import client from "db/client"
-//https://hooks.zapier.com/hooks/catch/22095477/2l0spul
 
 const webHook = asyncHandler( async (req, res) => {
   try {
