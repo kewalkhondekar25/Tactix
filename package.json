@@ -8,7 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "webhook": "cd ./apps/webhook && bun run --hot src/index.ts",
-    "sweeper": "cd ./apps/sweeper && bun run --hot index.ts"
+    "sweeper": "cd ./apps/sweeper && bun run --hot index.ts",
+    "worker": "cd ./apps/worker && bun run --hot src/index.ts" 
   },
   "devDependencies": {
     "prettier": "^3.5.3",
