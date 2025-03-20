@@ -1,5 +1,5 @@
 import client from "db/client";
-import { kafka, TOPIC_NAME, Partitioners } from "common/kafka";
+import { kafka, TOPIC_NAME } from "common/kafka";
 
 const main = async () => {
 
@@ -22,7 +22,6 @@ const main = async () => {
         await new Promise((resolve) => setTimeout(resolve, 3000));
         console.log("processing!!!");
         
-
         await consumer.commitOffsets([{
           topic: TOPIC_NAME,
           partition: partition,
