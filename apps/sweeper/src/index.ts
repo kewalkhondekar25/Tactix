@@ -20,7 +20,7 @@ const main = async () => {
       await producer.send({
         topic: TOPIC_NAME,
         messages: pendingEvents.map(item => {
-          return { value: item.flowRunId }
+          return { value: JSON.stringify({ flowRunId: item.flowRunId, stage: 0}) }
         })
       });
 
